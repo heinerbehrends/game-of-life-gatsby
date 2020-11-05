@@ -1,23 +1,19 @@
 import { produce } from "immer"
 import { CELL, CLUSTER, MATRIX } from "./action-types"
+import { matrixT } from "../logic/liveNeighbours"
 
-export function drawInitialMatrix(rows, columns) {
+export function drawInitialMatrix(rows: number, columns: number): matrixT {
   return Array(rows)
     .fill(false)
     .map(row => Array(columns).fill(row))
 }
-
-const initialMatrix = drawInitialMatrix(10, 10)
 
 function swapCell(state, xy, draft) {
   const cellState = state[xy[1]][xy[0]]
   draft[xy[1]][xy[0]] = !cellState
 }
 
-export const matrixReducer = (
-  state = initialMatrix,
-  { type, matrix, xy, cluster }
-) =>
+export const matrixReducer = (state: matrixT = null, { type, matrix, xy, cluster }): matrixT =>
   produce(state, draft => {
     switch (type) {
       case MATRIX:

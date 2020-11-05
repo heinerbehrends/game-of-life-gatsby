@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <Options />
-      <Matrix matrix={matrix} />
+      {matrix ? <Matrix matrix={matrix} /> : null}
       <StartStopButton />
     </>
   )

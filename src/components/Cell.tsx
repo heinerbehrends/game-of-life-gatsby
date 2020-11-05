@@ -7,8 +7,8 @@ const StyledSquare = styled.div`
   width: 8px;
   height: 8px;
   display: inline-block;
-  margin: 1px;
-  background-color: ${props => (props.isAlive ? "white" : "black")};
+  border: 1px solid darkgray;
+  background-color: ${props => (props.isAlive ? "yellow" : "black")};
 `
 
 function Cell({ isAlive, x, y }) {
@@ -18,15 +18,6 @@ function Cell({ isAlive, x, y }) {
     x,
     y,
   ])
-  // const setCell = useCallback(
-  //   () =>
-  //     dispatch({
-  //       type: CELL,
-  //       xy: [x, y],
-  //     }),
-  //   [dispatch, x, y],
-  // );
-
   const handleClick = () => {
     setCluster()
   }

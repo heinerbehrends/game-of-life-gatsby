@@ -22,6 +22,9 @@ function cellChange(isAlive: boolean, liveNeighbours: number): boolean {
 }
 
 export function nextGen(matrix: matrixT): matrixT {
+  if (!matrix) {
+    return null
+  }
   return matrix.map((row, indexRow) =>
     row.map((isAlive, indexColumn) =>
       cellChange(

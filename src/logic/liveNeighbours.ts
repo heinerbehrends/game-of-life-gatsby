@@ -11,7 +11,7 @@ function getNeighbours([x, y]: number[]): number[][] {
   ];
 }
 
-export type matrixT = boolean[][];
+export type matrixT = boolean[][] | null;
 
 function isOnBoard([x, y]: number[], matrix: matrixT): boolean {
   return x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length;
