@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react"
 import Matrix from "./Matrix"
-import StartStopButton from "./StartStopButton"
 import Options from "./Options"
 import { useDispatch, useSelector } from "react-redux"
 import useInterval from "../logic/useInterval"
@@ -27,8 +26,8 @@ function App() {
     )
 
     const initialMatrix = drawInitialMatrix(
-      Math.floor(vh / 12),
-      Math.floor(vw / 10.3)
+      Math.floor(vh / 10.8),
+      Math.floor(vw / 10)
     )
     dispatch(matrixAction(initialMatrix))
   }, [dispatch])
@@ -41,7 +40,6 @@ function App() {
     <>
       <Options />
       {matrix ? <Matrix matrix={matrix} /> : null}
-      <StartStopButton />
     </>
   )
 }
