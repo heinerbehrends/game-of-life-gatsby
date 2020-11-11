@@ -12,6 +12,9 @@ function swapCell(state, xy, draft) {
   const cellState = state[xy[1]][xy[0]]
   draft[xy[1]][xy[0]] = !cellState
 }
+function makeCellAlive(state, xy, draft) {
+  draft[xy[1]][xy[0]] = true
+}
 
 export const matrixReducer = (state: matrixT = null, { type, matrix, xy, cluster }): matrixT =>
   produce(state, draft => {
@@ -23,7 +26,7 @@ export const matrixReducer = (state: matrixT = null, { type, matrix, xy, cluster
         break
       case CLUSTER:
         cluster.forEach(xy => {
-          swapCell(state, xy, draft)
+          makeCellAlive(state, xy, draft)
         })
         break
       default:
