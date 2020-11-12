@@ -1,9 +1,6 @@
 import React from "react"
+import arraysAreEqual from "../logic/arraysAreEqual"
 import Cell from "./Cell"
-
-function propsAreEqual(prev, next) {
-  return prev.rowList === next.rowList
-}
 
 function Row({ rowList, rowKey }) {
   const row = rowList.map((isAlive, index) => (
@@ -11,5 +8,7 @@ function Row({ rowList, rowKey }) {
   ))
   return <section>{row}</section>
 }
-
-export default React.memo(Row, propsAreEqual)
+function areEqual(prev, next) {
+  return arraysAreEqual(prev.rowList, next.rowList)
+}
+export default React.memo(Row, areEqual)
