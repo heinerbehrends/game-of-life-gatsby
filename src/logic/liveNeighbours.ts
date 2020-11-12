@@ -19,7 +19,7 @@ function isOnBoard([x, y]: number[], matrix: matrixT): boolean {
 
 function foldTorus([y, x]: number[], matrix: matrixT): number[] {
   const numberOfCellsInRow: number = matrix[0].length;
-  const numberOfRows: number = matrix!.length;
+  const numberOfRows: number = matrix.length;
   if (x === -1) {
     x = numberOfCellsInRow - 1;
   }
@@ -35,6 +35,7 @@ function foldTorus([y, x]: number[], matrix: matrixT): number[] {
   return [x, y];
 }
 
+
 function checkLive([x, y]: number[], matrix: matrixT): boolean {
   return matrix[y][x];
 }
@@ -43,12 +44,12 @@ function countLives(acc: number, neighbour: boolean): number {
   return neighbour ? acc + 1 : acc;
 }
 
-function countLiveNeighbours(xy: number[], matrix: matrixT): number {
-  return getNeighbours(xy)
-    .filter((xy) => isOnBoard(xy, matrix))
-    .map((xy) => checkLive(xy, matrix))
-    .reduce(countLives, 0);
-}
+// function countLiveNeighbours(xy: number[], matrix: matrixT): number {
+//   return getNeighbours(xy)
+//     .filter((xy) => isOnBoard(xy, matrix))
+//     .map((xy) => checkLive(xy, matrix))
+//     .reduce(countLives, 0);
+// }
 
 export function countLiveNeighboursTorus(
   xy: number[],
@@ -60,4 +61,4 @@ export function countLiveNeighboursTorus(
     .reduce(countLives, 0);
 }
 
-export default countLiveNeighbours;
+// export default countLiveNeighbours;
