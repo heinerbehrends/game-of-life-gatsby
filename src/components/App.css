@@ -125,10 +125,18 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+body,
+button {
+  font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
+}
+html {
+  scrollbar-width: 8px;
+  font-size: 16px;
 }
