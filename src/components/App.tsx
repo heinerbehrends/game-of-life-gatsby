@@ -42,8 +42,6 @@ function App() {
   // setup simulation
 
   useInterval(() => {
-    // console.log(matrix)
-    // console.log(nextGen(matrix))
     const next = nextGen(matrix)
     console.log()
     if (!arraysAreEqual(matrix, next)) {
