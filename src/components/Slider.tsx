@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { useDispatch } from "react-redux"
 
 const SliderStyled = styled.input`
-  width: 160px;
-  margin: 8px 0;
+  width: 100%;
+  margin: 8px 0 8px 8px;
   background-color: transparent;
   -webkit-appearance: none;
 
@@ -12,76 +12,76 @@ const SliderStyled = styled.input`
     outline: none;
   }
   ::-webkit-slider-runnable-track {
-    background: #a4a4a4;
-    border: 0.2px solid #010101;
-    border-radius: 8px;
+    background: #717171;
+    border: 0.2px solid rgba(1, 1, 1, 0.9);
+    border-radius: 1.3px;
     width: 100%;
-    height: 8px;
+    height: 2px;
     cursor: pointer;
   }
   ::-webkit-slider-thumb {
-    margin-top: -8.2px;
-    width: 24px;
-    height: 24px;
+    margin-top: -7.2px;
+    width: 16px;
+    height: 16px;
     background: #ffffff;
     border: 1px solid #000000;
-    border-radius: 17px;
+    border-radius: 8px;
     cursor: pointer;
     -webkit-appearance: none;
   }
   :focus::-webkit-slider-runnable-track {
-    background: #bebebe;
+    background: #7e7e7e;
   }
   ::-moz-range-track {
-    background: #a4a4a4;
-    border: 0.2px solid #010101;
-    border-radius: 8px;
+    background: #717171;
+    border: 0.2px solid rgba(1, 1, 1, 0.9);
+    border-radius: 1.3px;
     width: 100%;
-    height: 8px;
+    height: 2px;
     cursor: pointer;
   }
   ::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     background: #ffffff;
     border: 1px solid #000000;
-    border-radius: 17px;
+    border-radius: 8px;
     cursor: pointer;
   }
   ::-ms-track {
     background: transparent;
     border-color: transparent;
-    border-width: 12px 0;
+    border-width: 7px 0;
     color: transparent;
     width: 100%;
-    height: 8px;
+    height: 2px;
     cursor: pointer;
   }
   ::-ms-fill-lower {
-    background: #8b8b8b;
-    border: 0.2px solid #010101;
-    border-radius: 16px;
+    background: #646464;
+    border: 0.2px solid rgba(1, 1, 1, 0.9);
+    border-radius: 2.6px;
   }
   ::-ms-fill-upper {
-    background: #a4a4a4;
-    border: 0.2px solid #010101;
-    border-radius: 16px;
+    background: #717171;
+    border: 0.2px solid rgba(1, 1, 1, 0.9);
+    border-radius: 2.6px;
   }
   ::-ms-thumb {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     background: #ffffff;
     border: 1px solid #000000;
-    border-radius: 17px;
+    border-radius: 8px;
     cursor: pointer;
     margin-top: 0px;
     /*Needed to keep the Edge thumb centred*/
   }
   :focus::-ms-fill-lower {
-    background: #a4a4a4;
+    background: #717171;
   }
   :focus::-ms-fill-upper {
-    background: #bebebe;
+    background: #7e7e7e;
   }
   /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
 how to remove the virtical space around the range input in IE*/

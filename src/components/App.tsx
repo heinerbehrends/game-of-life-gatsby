@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo } from "react"
-import { createGlobalStyle } from "styled-components"
 import Board from "./Board"
 import Options from "./Options"
 import { useDispatch, useSelector } from "react-redux"
@@ -30,8 +29,8 @@ function App() {
     )
 
     const initialMatrix = drawInitialMatrix(
-      Math.floor((vh - 40) / 8),
-      Math.floor((vw - 16) / 8)
+      Math.floor(vh / 8),
+      Math.floor(vw / 8)
     )
     dispatch(matrixAction(initialMatrix))
   }, [])
