@@ -1,7 +1,7 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
-import { patternAction } from "../reducers-actions/action-creators"
+import { createPatternAction } from "../reducers-actions/action-creators"
 import { methuselah } from "../patterns/methuselahs"
 import { stillLives } from "../patterns/stillLives"
 import { oscillators } from "../patterns/oscillators"
@@ -12,10 +12,10 @@ const getPattern = state => state.patternReducer
 type patternButtonColumnProps = {
   patterns: string[]
   title: string
+  setOpen: Function
 }
 
 const PatternButtonContainer = styled.section`
-  margin-top: 40px;
   padding: 8px;
   background-color: #fff;
   opacity: 90%;
@@ -50,11 +50,15 @@ const ButtonColumn = styled.div`
   }
 `
 
-function PatternButtonColumn({ title, patterns }: patternButtonColumnProps) {
+function PatternButtonColumn({
+  title,
+  patterns,
+  setOpen,
+}: patternButtonColumnProps) {
   const currentPattern = useSelector(getPattern)
   const dispatch = useDispatch()
   function setPattern(pattern) {
-    dispatch(patternAction(pattern))
+    dispatch(createPatternAction(pattern))
   }
   return (
     <PatternButtonContainer>
@@ -65,7 +69,10 @@ function PatternButtonColumn({ title, patterns }: patternButtonColumnProps) {
         {patterns.map(pattern => (
           <PatternButton
             isActive={currentPattern === pattern}
-            onClick={() => setPattern(pattern)}
+            onClick={() => {
+              setPattern(pattern)
+              setOpen(false)
+            }}
           >
             {pattern}
           </PatternButton>
@@ -87,24 +94,33 @@ const PatternMenuContainer = styled.div<patternMenuContainerProps>`
   display: ${props => (props.isOpen ? "inline-block" : "none")};
 `
 
-export default function PatternButtons({ isOpen }) {
+type patternMenuProps = {
+  isOpen: boolean
+  setOpen: Function
+}
+
+export default function PatternMenu({ isOpen, setOpen }: patternMenuProps) {
   return (
     <PatternMenuContainer isOpen={isOpen}>
       <PatternButtonColumn
         title="Methuselah"
         patterns={Object.keys(methuselah)}
+        setOpen={setOpen}
       />
       <PatternButtonColumn
         title="Still lives"
         patterns={Object.keys(stillLives)}
+        setOpen={setOpen}
       />
       <PatternButtonColumn
         title="Oscillators"
         patterns={Object.keys(oscillators)}
+        setOpen={setOpen}
       />
       <PatternButtonColumn
         title="Spaceships"
         patterns={Object.keys(spaceships)}
+        setOpen={setOpen}
       />
     </PatternMenuContainer>
   )

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
 import { createResetAction } from "../reducers-actions/action-creators"
-import PatternButtons from "./PatternButtons"
+import PatternMenu from "./PatternButtons"
 import Slider from "./Slider"
 import StartStopButton from "./StartStopButton"
 
@@ -67,7 +67,7 @@ function Options() {
           </OptionsButton>
         </OptionsContainer>
       </div>
-      <PatternButtons isOpen={isOpen} />
+      <PatternMenu isOpen={isOpen} setOpen={setOpen} />
     </>
   )
 }
