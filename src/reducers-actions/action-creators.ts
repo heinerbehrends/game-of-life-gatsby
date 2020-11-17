@@ -1,12 +1,21 @@
-import { MATRIX, PATTERN } from "./action-types"
+import { CELLSIZE, MATRIX, PATTERN, RESET } from "./action-types"
+import { cellSizeAction } from './cellSizeReducer'
 
-
-export const matrixAction = matrix => ({
+export const createMatrixAction = matrix => ({
   type: MATRIX,
   matrix,
 })
 
-export const patternAction = pattern => ({
+export const createPatternAction = pattern => ({
   type: PATTERN,
   pattern,
+})
+
+export const createCellSizeAction = (cellSize: number): cellSizeAction => ({
+  type: CELLSIZE,
+  cellSize,
+})
+
+export const createResetAction = () => ({
+  type: RESET
 })

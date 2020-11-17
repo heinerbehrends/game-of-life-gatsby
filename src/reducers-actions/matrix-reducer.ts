@@ -1,5 +1,5 @@
 import { produce } from "immer"
-import { CELL, CLUSTER, MATRIX } from "./action-types"
+import { CELL, CLUSTER, MATRIX, RESET } from "./action-types"
 import { matrixT } from "../logic/liveNeighbours"
 
 export function drawInitialMatrix(rows: number, columns: number): matrixT {
@@ -42,6 +42,8 @@ export const matrixReducer = (state: matrixT = null, { type, matrix, xy, cluster
           makeCellAlive([x,y], draft)
         })
         break
+      case RESET:
+       return state.map(rows => rows.map(cell => false))
       default:
         return state
     }

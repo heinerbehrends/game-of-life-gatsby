@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
+import { createResetAction } from "../reducers-actions/action-creators"
 import PatternButtons from "./PatternButtons"
 import Slider from "./Slider"
 import StartStopButton from "./StartStopButton"
@@ -25,7 +26,7 @@ type dropDownButtonProps = {
   onClick: Function
 }
 
-const DropDownButton = styled(InputStyled)<dropDownButtonProps>`
+const OptionsButton = styled(InputStyled)<dropDownButtonProps>`
   section {
     flex-direction: column;
   }
@@ -37,7 +38,7 @@ function Options() {
   const [isOpen, setOpen] = useState(false)
   return (
     <>
-      <div style={{ position: "fixed", width: "100%", zIndex: 1 }}>
+      <div style={{ position: "fixed", width: "100%", zIndex: 1, top: 0 }}>
         <OptionsContainer>
           <InputStyled style={{ display: "flex" }}>
             <label htmlFor="speed">Speed</label>
@@ -58,9 +59,12 @@ function Options() {
             />
           </InputStyled>
           <StartStopButton />
-          <DropDownButton onClick={() => setOpen(!isOpen)}>
+          <OptionsButton onClick={() => setOpen(!isOpen)}>
             {"Patterns  v"}
-          </DropDownButton>
+          </OptionsButton>
+          <OptionsButton onClick={() => dispatch(createResetAction())}>
+            Reset
+          </OptionsButton>
         </OptionsContainer>
       </div>
       <PatternButtons isOpen={isOpen} />
