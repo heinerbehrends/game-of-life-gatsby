@@ -10,7 +10,12 @@ export default function SpeedSlider({ dispatch }: SpeedSliderProps) {
   const [speedValue, setSpeedValue] = useState("4")
   return (
     <>
-      <InputStyled style={{ display: "flex" }}>
+      <InputStyled
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <label htmlFor="speed">Speed</label>
         <Slider
           name={"speed"}
