@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
 import { createResetAction } from "../reducers-actions/action-creators"
-import CellSizeSlider from "./CellSizeSlider"
 import PatternMenu from "./PatternButtons"
 import SpeedSlider from "./SpeedSlider"
 import StartStopButton from "./StartStopButton"
@@ -48,7 +47,6 @@ function Options() {
           <OptionsButton onClick={() => dispatch(createResetAction())}>
             Reset
           </OptionsButton>
-          <CellSizeSlider dispatch={dispatch} />
         </OptionsContainer>
       </div>
       <PatternMenu isOpen={isOpen} setOpen={setOpen} />
