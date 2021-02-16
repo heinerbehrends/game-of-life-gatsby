@@ -1,9 +1,10 @@
 import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import styled from "styled-components"
 import { createResetAction } from "../reducers-actions/action-creators"
+import CellSizeSlider from "./CellSizeSlider"
 import PatternMenu from "./PatternButtons"
-import Slider from "./Slider"
+import SpeedSlider from "./SpeedSlider"
 import StartStopButton from "./StartStopButton"
 
 export const InputStyled = styled.button`
@@ -34,30 +35,12 @@ const OptionsButton = styled(InputStyled)<dropDownButtonProps>`
 
 function Options() {
   const dispatch = useDispatch()
-  const [sliderValue, setSliderValue] = useState("4")
   const [isOpen, setOpen] = useState(false)
   return (
     <>
       <div style={{ position: "fixed", width: "100%", zIndex: 1, top: 0 }}>
         <OptionsContainer>
-          <InputStyled style={{ display: "flex" }}>
-            <label htmlFor="speed">Speed</label>
-            <Slider
-              onInput={event => {
-                dispatch({
-                  type: "DELAY",
-                  delay:
-                    600 / event.target.value === Infinity
-                      ? null
-                      : 600 / event.target.value,
-                })
-              }}
-              onChange={event => {
-                setSliderValue(event.target.value)
-              }}
-              value={sliderValue}
-            />
-          </InputStyled>
+          <SpeedSlider dispatch={dispatch} />
           <StartStopButton />
           <OptionsButton onClick={() => setOpen(!isOpen)}>
             {"Patterns  v"}
@@ -65,6 +48,7 @@ function Options() {
           <OptionsButton onClick={() => dispatch(createResetAction())}>
             Reset
           </OptionsButton>
+          <CellSizeSlider dispatch={dispatch} />
         </OptionsContainer>
       </div>
       <PatternMenu isOpen={isOpen} setOpen={setOpen} />

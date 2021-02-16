@@ -14,7 +14,7 @@ const getMatrix = state => state.matrixReducer
 const getDelay = state => state.delayReducer
 export const getCellSize = state => state.cellSizeReducer
 
-function useViewport() {
+export function useViewport() {
   const vw = Math.max(
     document.documentElement.clientWidth || 0,
     window.innerWidth || 0
