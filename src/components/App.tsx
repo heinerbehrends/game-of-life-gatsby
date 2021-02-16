@@ -12,7 +12,7 @@ import ClassicSpinner from "./Spinnner"
 
 const getMatrix = state => state.matrixReducer
 const getDelay = state => state.delayReducer
-export const getCellSize = state => state.cellSizeReducer
+export const cellSize = 16
 
 export function useViewport() {
   const vw = Math.max(
@@ -29,13 +29,12 @@ export function useViewport() {
 function App() {
   // setup state and dispatch
   const dispatch = useDispatch()
-  // const matrix = useSelector(getMatrix)
-  // setup matrix width to fill the viewport
-  const cellSize = useSelector(getCellSize)
   const topBarHeight = 40
 
   useEffect(() => {
+    // setup matrix width to fill the viewport
     const { vw, vh } = useViewport()
+    console.log(Math.floor((vh - topBarHeight) / cellSize))
     const initialMatrix = drawInitialMatrix(
       Math.floor((vh - topBarHeight) / cellSize),
       Math.floor(vw / cellSize)

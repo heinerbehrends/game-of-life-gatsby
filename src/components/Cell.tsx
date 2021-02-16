@@ -2,7 +2,7 @@ import React, { useCallback, memo } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
 import { patternSwitch } from "../patterns/patterns"
-import { getCellSize } from "./App"
+import { cellSize } from "./App"
 
 const StyledSquare = styled.div<cellProps>`
   width: ${({ cellSize }) => cellSize}px;
@@ -25,7 +25,6 @@ const patternSelector = state => state.patternReducer
 function Cell({ isAlive, x, y }: cellProps): React.ReactElement {
   const dispatch: Function = useDispatch()
   const pattern: string = useSelector(patternSelector)
-  const cellSize: number = useSelector(getCellSize)
   const setPattern = useCallback(
     () => dispatch(patternSwitch[pattern]([x, y])),
     [x, y, pattern]
