@@ -3,11 +3,13 @@ import { combineReducers } from "redux"
 import { matrixReducer } from "./matrix-reducer"
 import { delayReducer } from "./delay-reducer"
 import { patternReducer } from "./pattern-reducer"
+import { cellSizeReducer } from "./cellSizeReducer"
 
 const rootReducer = combineReducers({
   matrixReducer,
   delayReducer,
   patternReducer,
+  cellSizeReducer,
 })
 
 const store = createStore(
